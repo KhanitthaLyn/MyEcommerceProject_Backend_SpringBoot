@@ -2,7 +2,6 @@ package com.ecommerce.myecommerceproject.model;
 
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -48,5 +47,5 @@ public class Product {
     private User user;
 
     @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
-    private List<CartIem> products = new ArrayList<>();
+    private List<CartItem> products = new ArrayList<>();
 }

@@ -1,11 +1,9 @@
 package com.ecommerce.myecommerceproject.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +22,9 @@ public class Cart {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "cart,", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
-    private List<CartIem> cartIemList = new ArrayList<>();
+    // 👇 แก้ชื่อ class และ mappedBy
+    @OneToMany(mappedBy = "cart", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
+    private List<CartItem> cartItems = new ArrayList<>();
 
     private Double totalPrice = 0.0;
 }

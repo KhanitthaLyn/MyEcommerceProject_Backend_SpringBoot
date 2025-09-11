@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "cart_Items")
 @NoArgsConstructor
 @AllArgsConstructor
-public class CartIem {
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartIemId;
