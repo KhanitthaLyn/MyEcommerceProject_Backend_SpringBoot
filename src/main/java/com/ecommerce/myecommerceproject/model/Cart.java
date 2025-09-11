@@ -22,7 +22,6 @@ public class Cart {
     @JoinColumn(name = "user_id")
     private User user;
 
-    // 👇 แก้ชื่อ class และ mappedBy
     @OneToMany(mappedBy = "cart", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     private List<CartItem> cartItems = new ArrayList<>();
 
