@@ -39,7 +39,7 @@ public class Address {
     private String country;
 
     @NotBlank
-    @Size(min = 6, message = "Pincode name must be at least 6 characters")
+    @Size(min = 5, message = "Pincode name must be at least 5 characters")
     private String pincode;
 
     // Many Address belong to One User
