@@ -32,45 +32,43 @@ public class User {
     private String username;
 
     @NotBlank
-    @Size(max = 100)
+    @Size(max = 50)
+    @Email
+    @Column(name = "email")
+    private String email;
+
+    @NotBlank
+    @Size(max = 120)
     @Column(name = "password")
     private String password;
 
-    @NotBlank
-    @Size(max = 50)
-    @Email
-    private String email;
-
-    public User(String username, String email, String password) {
-        this.username = username;
+    public User(String userName, String email, String password) {
+        this.username = userName;
         this.email = email;
         this.password = password;
     }
 
     @Setter
     @Getter
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    // One User มีหลาย Address
     @Getter
     @Setter
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-    //@JoinTable(name = "user_address",
-    //        joinColumns = @JoinColumn(name = "user_id"),
-    //        inverseJoinColumns = @JoinColumn(name = "address_id"))
     private List<Address> addresses = new ArrayList<>();
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    @OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private Cart cart;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "user",
             cascade = {CascadeType.PERSIST, CascadeType.MERGE},
             orphanRemoval = true)
-    private Set<Product> products;
+    private Set<Product> products = new HashSet<>();
 }

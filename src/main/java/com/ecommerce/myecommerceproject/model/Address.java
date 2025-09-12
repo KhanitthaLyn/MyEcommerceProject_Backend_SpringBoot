@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long addressId;
@@ -26,31 +27,31 @@ public class Address {
     private String buildingName;
 
     @NotBlank
-    @Size(min = 4, message = "City name must be at least 5 characters")
+    @Size(min = 4, message = "City name must be at least 4 characters")
     private String city;
 
     @NotBlank
     @Size(min = 5, message = "State name must be at least 5 characters")
-    private String State;
+    private String state;
 
     @NotBlank
-    @Size(min = 2, message = "Country name must be at least 5 characters")
+    @Size(min = 2, message = "Country name must be at least 2 characters")
     private String country;
 
     @NotBlank
     @Size(min = 6, message = "Pincode name must be at least 6 characters")
     private String pincode;
 
+    // Many Address belong to One User
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 
     public Address(String street, String buildingName, String city, String state, String country, String pincode) {
         this.street = street;
         this.buildingName = buildingName;
         this.city = city;
-        State = state;
+        this.state = state;
         this.country = country;
         this.pincode = pincode;
     }
