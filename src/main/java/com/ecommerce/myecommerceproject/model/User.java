@@ -32,7 +32,7 @@ public class User {
     private String username;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(max = 100)
     @Column(name = "password")
     private String password;
 
@@ -41,10 +41,10 @@ public class User {
     @Email
     private String email;
 
-    public User(String username, String password, String email) {
+    public User(String username, String email, String password) {
         this.username = username;
-        this.password = password;
         this.email = email;
+        this.password = password;
     }
 
     @Setter
@@ -58,10 +58,10 @@ public class User {
 
     @Getter
     @Setter
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "user_address",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "address_id"))
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    //@JoinTable(name = "user_address",
+    //        joinColumns = @JoinColumn(name = "user_id"),
+    //        inverseJoinColumns = @JoinColumn(name = "address_id"))
     private List<Address> addresses = new ArrayList<>();
 
     @ToString.Exclude
