@@ -14,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
@@ -31,7 +30,7 @@ public class JwtUtils {
     @Value("${spring.ecom.app.jwtCookieName}")
     private String jwtCookie;
 
-    // ดึง JWT จาก Cookie
+    //JWT from Cookie
     public String getJwtFromCookies(HttpServletRequest request) {
         Cookie cookie = WebUtils.getCookie(request, jwtCookie);
         if (cookie != null) {
@@ -40,16 +39,16 @@ public class JwtUtils {
         return null;
     }
 
-    // ดึง JWT จาก Header
+    // JWT from Header
     public String getJwtFromHeader(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7); // ตัดคำว่า "Bearer "
+            return bearerToken.substring(7);
         }
         return null;
     }
 
-    // สร้าง JWT Cookie
+    // create JWT Cookie
     public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal) {
         String jwt = generateTokenFromUsername(userPrincipal.getUsername());
         return ResponseCookie.from(jwtCookie, jwt)
@@ -59,14 +58,14 @@ public class JwtUtils {
                 .build();
     }
 
-    // ลบ JWT Cookie
+    // delete JWT Cookie
     public ResponseCookie getCleanJwtCookie() {
         return ResponseCookie.from(jwtCookie, null)
                 .path("/api")
                 .build();
     }
 
-    // สร้าง Token จาก Username
+    // create Token from Username
     public String generateTokenFromUsername(String username) {
         return Jwts.builder()
                 .setSubject(username)
@@ -76,7 +75,7 @@ public class JwtUtils {
                 .compact();
     }
 
-    // ดึง Username จาก Token
+    // get Username from Token
     public String getUserNameFromJwtToken(String token) {
         return Jwts.parser()
                 .verifyWith((SecretKey) key())

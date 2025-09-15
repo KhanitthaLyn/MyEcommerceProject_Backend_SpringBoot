@@ -4,6 +4,12 @@ import com.ecommerce.myecommerceproject.config.AppConstants;
 import com.ecommerce.myecommerceproject.payload.CategoryDTO;
 import com.ecommerce.myecommerceproject.payload.CategoryResponse;
 import com.ecommerce.myecommerceproject.service.CategoryService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,6 +39,14 @@ public class CategoryController {
         return new ResponseEntity<>(categoryResponse, HttpStatus.OK);
     }
 
+    @Tag(name = "Category APIs", description = "APIs for manageing categories")
+    @Operation(summary = "Get all categories", description = "API to a new category")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Created successfully!"),
+            @ApiResponse(responseCode = "400", description = "Invalid Input", content = @Content),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    })
+
     @PostMapping("/public/categories")
     public ResponseEntity<CategoryDTO> createCategory(@Valid @RequestBody CategoryDTO categoryDTO) {
         CategoryDTO savedCategortDTO = categoryService.createCategory(categoryDTO);
@@ -40,7 +54,8 @@ public class CategoryController {
     }
 
     @DeleteMapping("/admin/categories/{categoryId}")
-    public ResponseEntity<CategoryDTO> deleteCategory(@PathVariable Long categoryId) {
+    public ResponseEntity<CategoryDTO> deleteCategory(@Parameter(description = "Id of the Category that want to create")
+                                                          @PathVariable Long categoryId) {
         CategoryDTO deleteCategory = categoryService.deleteCategory(categoryId);
         return new ResponseEntity<>(deleteCategory, HttpStatus.OK);
     }
