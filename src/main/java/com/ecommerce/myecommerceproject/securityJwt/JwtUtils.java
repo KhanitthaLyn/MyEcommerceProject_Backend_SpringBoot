@@ -30,16 +30,15 @@ public class JwtUtils {
     @Value("${spring.ecom.app.jwtCookieName}")
     private String jwtCookie;
 
-    //JWT from Cookie
     public String getJwtFromCookies(HttpServletRequest request) {
         Cookie cookie = WebUtils.getCookie(request, jwtCookie);
         if (cookie != null) {
             return cookie.getValue();
+        } else {
+            return null;
         }
-        return null;
     }
 
-    // JWT from Header
     public String getJwtFromHeader(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
@@ -48,34 +47,33 @@ public class JwtUtils {
         return null;
     }
 
-    // create JWT Cookie
     public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal) {
         String jwt = generateTokenFromUsername(userPrincipal.getUsername());
-        return ResponseCookie.from(jwtCookie, jwt)
+        ResponseCookie cookie = ResponseCookie.from(jwtCookie, jwt)
                 .path("/api")
                 .maxAge(24 * 60 * 60)
                 .httpOnly(false)
+                .secure(false)
                 .build();
+        return cookie;
     }
 
-    // delete JWT Cookie
     public ResponseCookie getCleanJwtCookie() {
-        return ResponseCookie.from(jwtCookie, null)
+        ResponseCookie cookie = ResponseCookie.from(jwtCookie, null)
                 .path("/api")
                 .build();
+        return cookie;
     }
 
-    // create Token from Username
     public String generateTokenFromUsername(String username) {
         return Jwts.builder()
-                .setSubject(username)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+                .subject(username)
+                .issuedAt(new Date())
+                .expiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(key())
                 .compact();
     }
 
-    // get Username from Token
     public String getUserNameFromJwtToken(String token) {
         return Jwts.parser()
                 .verifyWith((SecretKey) key())
