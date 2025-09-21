@@ -3,6 +3,7 @@ package com.ecommerce.myecommerceproject.securityJwt;
 import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
+import java.util.List;
 
 import com.ecommerce.myecommerceproject.securityService.UserDetailsImpl;
 import io.jsonwebtoken.*;
@@ -50,7 +51,7 @@ public class JwtUtils {
     public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal) {
         String jwt = generateTokenFromUsername(userPrincipal.getUsername());
         ResponseCookie cookie = ResponseCookie.from(jwtCookie, jwt)
-                .path("/api")
+                .path("/")
                 .maxAge(24 * 60 * 60)
                 .httpOnly(false)
                 .secure(false)

@@ -1,9 +1,5 @@
 package com.ecommerce.myecommerceproject.securityJwt;
-
-import org.springframework.stereotype.Component;
-
-import java.io.IOException;
-
+import com.ecommerce.myecommerceproject.securityService.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,64 +10,70 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import java.io.IOException;
+
 @Component
-    public class AuthTokenFilter extends OncePerRequestFilter {
-        @Autowired
-        private JwtUtils jwtUtils;
+public class AuthTokenFilter extends OncePerRequestFilter {
+    @Autowired
+    private JwtUtils jwtUtils;
 
-        @Autowired
-        private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
 
-        private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
-        @Override
-        protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-                throws ServletException, IOException {
-            logger.debug("AuthTokenFilter called for URI: {}", request.getRequestURI());
-            try {
-                String jwt = parseJwt(request);
-                if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
-                    String username = jwtUtils.getUserNameFromJwtToken(jwt);
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        logger.debug("AuthTokenFilter called for URI: {}", request.getRequestURI());
+        try {
+            String jwt = parseJwt(request);
+            if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
+                String username = jwtUtils.getUserNameFromJwtToken(jwt);
 
-                    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-                    UsernamePasswordAuthenticationToken authentication =
-                            new UsernamePasswordAuthenticationToken(userDetails,
-                                    null,
-                                    userDetails.getAuthorities());
-                    logger.debug("Roles from JWT: {}", userDetails.getAuthorities());
+                UsernamePasswordAuthenticationToken authentication =
+                        new UsernamePasswordAuthenticationToken(userDetails,
+                                null,
+                                userDetails.getAuthorities());
+                logger.debug("Roles from JWT: {}", userDetails.getAuthorities());
 
-                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
-                }
-            } catch (Exception e) {
-                logger.error("Cannot set user authentication: {}", e);
+                SecurityContextHolder.getContext().setAuthentication(authentication);
             }
-
-            filterChain.doFilter(request, response);
+        } catch (Exception e) {
+            logger.error("Cannot set user authentication: {}", e);
         }
 
-//        private String parseJwt(HttpServletRequest request) {
-//            String jwt = jwtUtils.getJwtFromHeader(request);
-//            logger.debug("AuthTokenFilter.java: {}", jwt);
-//            return jwt;
-
-    private String parseJwt(HttpServletRequest request) {
-        String jwtFromCookie = jwtUtils.getJwtFromHeader(request);
-       if (jwtFromCookie != null) {
-           return jwtFromCookie;
-       }
-
-       String jwtFromHeader = jwtUtils.getJwtFromHeader(request);
-       if (jwtFromHeader != null) {
-           return jwtFromHeader;
-       }
-       return null;
-        }
+        filterChain.doFilter(request, response);
     }
 
+//    private String parseJwt(HttpServletRequest request) {
+//        String jwt = jwtUtils.getJwtFromCookies(request);
+//        logger.debug("AuthTokenFilter.java: {}", jwt);
+//        return jwt;
+//    }
+
+    private String parseJwt(HttpServletRequest request) {
+        String jwtFromCookie = jwtUtils.getJwtFromCookies(request);
+        if (jwtFromCookie != null) {
+            logger.debug("JWT from cookie: {}", jwtFromCookie);
+            return jwtFromCookie;
+        }
+
+        String jwtFromHeader = jwtUtils.getJwtFromHeader(request);
+        if (jwtFromHeader != null) {
+            logger.debug("JWT from header: {}", jwtFromHeader);
+            return jwtFromHeader;
+        }
+
+        logger.debug("No JWT found in cookie or header");
+        return null;
+    }
+}
