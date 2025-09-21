@@ -1,6 +1,4 @@
 # MyEcommerceProject
-MyEcommerce Project with SpringBoot
-
 
 # E-commerce Application – Full Stack Java (Spring Boot + (React))
 
