@@ -43,7 +43,7 @@ Explore deployment with AWS
 
 Prepare for future microservices with Spring Cloud
 
-
+http://localhost:8090/swagger-ui/index.html#/
 <img width="1438" height="666" alt="Screenshot 2568-09-22 at 14 38 57" src="https://github.com/user-attachments/assets/5e588754-db1f-4218-8342-9cdc67be8113" />
 
 
