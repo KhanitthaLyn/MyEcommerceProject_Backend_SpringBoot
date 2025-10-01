@@ -1,6 +1,5 @@
 package com.ecommerce.myecommerceproject.service;
 
-
 import com.ecommerce.myecommerceproject.exceptions.APIException;
 import com.ecommerce.myecommerceproject.exceptions.ResourceNotFoundException;
 import com.ecommerce.myecommerceproject.model.Cart;
@@ -12,6 +11,7 @@ import com.ecommerce.myecommerceproject.payload.ProductResponse;
 import com.ecommerce.myecommerceproject.repositories.CartRepository;
 import com.ecommerce.myecommerceproject.repositories.CategoryRepository;
 import com.ecommerce.myecommerceproject.repositories.ProductRepository;
+import com.ecommerce.myecommerceproject.util.AuthUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,6 +48,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private FileService fileService;
 
+    @Autowired
+    AuthUtil authUtil;
+
     @Value("${project.image}")
     private String path;
 
@@ -72,21 +75,23 @@ public class ProductServiceImpl implements ProductService {
         }
 
         if (isProductNotPresent) {
-        Product product = modelMapper.map(productDTO, Product.class);
-        product.setImage("default.png");
-        product.setCategory(category);
-        double specialPrice = product.getPrice() -
-                ((product.getDiscount() * 0.01) * product.getPrice());
-        product.setSpecialPrice(specialPrice);
-        Product savedProduct = productRepository.save(product);
-        return modelMapper.map(savedProduct, ProductDTO.class);
-    } else {
-            throw new APIException("Product already exist");
+            Product product = modelMapper.map(productDTO, Product.class);
+            product.setImage("default.png");
+            product.setCategory(category);
+            product.setUser(authUtil.loggedInUser());
+            double specialPrice = product.getPrice() -
+                    ((product.getDiscount() * 0.01) * product.getPrice());
+            product.setSpecialPrice(specialPrice);
+            Product savedProduct = productRepository.save(product);
+            return modelMapper.map(savedProduct, ProductDTO.class);
+        } else {
+            throw new APIException("Product already exist!!");
         }
     }
 
+
     @Override
-    public ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder, String keyword, String caregory) {
+    public ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder, String keyword, String category) {
         //check products size is 0
         Sort sortByAndOrder = sortOrder.equalsIgnoreCase("asc") ?
                 Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
@@ -99,10 +104,10 @@ public class ProductServiceImpl implements ProductService {
                             + keyword.toLowerCase() + "%"));
         }
 
-        if (caregory != null && !caregory.isEmpty()) {
+        if (category != null && !category.isEmpty()) {
             spec = spec.and((root, query, criteriaBuilder) ->
                     criteriaBuilder.like(root.get("category")
-                            .get("categoryName"), caregory));
+                            .get("categoryName"), category));
         }
 
         Page<Product> pageProducts = productRepository.findAll(spec, pageDetails);
@@ -125,13 +130,12 @@ public class ProductServiceImpl implements ProductService {
         productResponse.setLastPage(pageProducts.isLast());
         return productResponse;
     }
-
     private String constructImageUrl(String imageName) {
         return imageBaseUrl.endsWith("/") ? imageBaseUrl + imageName : imageBaseUrl + "/" + imageName;
     }
 
     @Override
-    public ProductResponse seachbyCategory(Long categoryId, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder) {
+    public ProductResponse searchByCategory(Long categoryId, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder) {
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("category", "categoryId", categoryId));
@@ -163,7 +167,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductResponse seachProductByKeyword(String keyword, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder) {
+    public ProductResponse searchProductByKeyword(String keyword, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder) {
 
         Sort sortByAndOrder = sortOrder.equalsIgnoreCase("asc") ?
                 Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
