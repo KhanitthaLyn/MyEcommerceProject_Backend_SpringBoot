@@ -30,6 +30,7 @@ public class OrderController {
     public ResponseEntity<OrderDTO> orderProducts(@PathVariable String paymentMethod,
                                                   @RequestBody OrderRequestDTO orderRequestDTO) {
         String emailId = authUtil.loggedInEmail();
+        System.out.println("orderRequestDTO DATA: " + orderRequestDTO);
         OrderDTO order = orderService.PlaceOrder(
                 emailId,
                 orderRequestDTO.getAddressId(),
@@ -44,6 +45,7 @@ public class OrderController {
 
     @PostMapping("/order/stripe-client-secret")
     public ResponseEntity<String> createStripeClientSecret(@RequestBody StripePaymentDto stripePaymentDTO) throws StripeException {
+        System.out.println("stripePaymentDTO Received: " + stripePaymentDTO);
         PaymentIntent paymentIntent = stripeService.paymentIntent(stripePaymentDTO);
         return new ResponseEntity<>(paymentIntent.getClientSecret(), HttpStatus.CREATED);
     }
