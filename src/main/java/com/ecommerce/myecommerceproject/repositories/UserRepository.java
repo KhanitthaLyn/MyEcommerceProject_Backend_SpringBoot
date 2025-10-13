@@ -1,7 +1,10 @@
 package com.ecommerce.myecommerceproject.repositories;
 
+import com.ecommerce.myecommerceproject.model.AppRole;
 import com.ecommerce.myecommerceproject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,4 +22,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Boolean existsByEmail(String email);
 
+    @Query("SELECT u FROM User u JOIN u.roles r WHERE r.roleName = :role ")
+    Page<User> findByRoleName(@Param("role") AppRole appRole, Pageable pageable);
 }

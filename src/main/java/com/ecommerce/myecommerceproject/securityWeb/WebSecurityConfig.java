@@ -25,6 +25,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Configuration
@@ -131,38 +132,40 @@ public class WebSecurityConfig {
             Set<Role> userRoles = Set.of(userRole);
             Set<Role> sellerRoles = Set.of(sellerRole);
             Set<Role> adminRoles = Set.of(userRole, sellerRole, adminRole);
-
-
-            // Create users if not already present
+// Create users with roles directly
             if (!userRepository.existsByUsername("user1")) {
                 User user1 = new User("user1", "user1@example.com", passwordEncoder.encode("password1"));
+                user1.setRoles(new HashSet<>(Set.of(userRole)));
                 userRepository.save(user1);
             }
 
             if (!userRepository.existsByUsername("seller1")) {
                 User seller1 = new User("seller1", "seller1@example.com", passwordEncoder.encode("password2"));
+                seller1.setRoles(new HashSet<>(Set.of(sellerRole)));
                 userRepository.save(seller1);
             }
 
             if (!userRepository.existsByUsername("admin")) {
                 User admin = new User("admin", "admin@example.com", passwordEncoder.encode("adminPass"));
+                admin.setRoles(new HashSet<>(Set.of(userRole, sellerRole, adminRole)));
                 userRepository.save(admin);
             }
-
-            userRepository.findByUsername("user1").ifPresent(user -> {
-                user.setRoles(userRoles);
-                userRepository.save(user);
-            });
-
-            userRepository.findByUsername("seller1").ifPresent(seller -> {
-                seller.setRoles(sellerRoles);
-                userRepository.save(seller);
-            });
-
-            userRepository.findByUsername("admin").ifPresent(admin -> {
-                admin.setRoles(adminRoles);
-                userRepository.save(admin);
-            });
+//
+//
+//            userRepository.findByUsername("user1").ifPresent(user -> {
+//                user.setRoles(userRoles);
+//                userRepository.save(user);
+//            });
+//
+//            userRepository.findByUsername("seller1").ifPresent(seller -> {
+//                seller.setRoles(sellerRoles);
+//                userRepository.save(seller);
+//            });
+//
+//            userRepository.findByUsername("admin").ifPresent(admin -> {
+//                admin.setRoles(adminRoles);
+//                userRepository.save(admin);
+//            });
         };
     }
 }
