@@ -11,10 +11,6 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Product entity represents a product available in the e-commerce application.
- * It is mapped to the "products" table in the database.
- */
 @Entity
 @Data // Lombok annotation to generate getters, setters, toString, equals, and hashCode
 @NoArgsConstructor // Lombok annotation to generate a no-argument constructor
@@ -31,45 +27,18 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
 
-    /**
-     * Name of the product.
-     * Cannot be blank and must contain at least 3 characters.
-     */
     @NotBlank
     @Size(min = 3, message = "Product name must contain at least 3 characters")
     private String productName;
 
-    /**
-     * Description of the product.
-     * Cannot be blank and must contain at least 6 characters.
-     */
+
     @NotBlank
     @Size(min = 6, message = "Product description must contain at least 6 characters")
     private String productDescription;
-
-    /**
-     * Image URL or path for the product.
-     */
     private String image;
-
-    /**
-     * Quantity of the product available in stock.
-     */
     private Integer quantity;
-
-    /**
-     * Base price of the product.
-     */
     private Double price;
-
-    /**
-     * Discount applied to the product.
-     */
     private Double discount;
-
-    /**
-     * Special price (e.g., promotional price) of the product.
-     */
     private Double specialPrice;
 
     /**

@@ -59,12 +59,12 @@ public class ProductServiceImpl implements ProductService {
     @Value("${image.base.url}")
     private String imageBaseUrl;
 
+
     @Override
     public ProductDTO addProduct(Long categoryId, ProductDTO productDTO) {
-        //check if product already present or not
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("category", "categoryId", categoryId));
+                        new ResourceNotFoundException("Category", "categoryId", categoryId));
 
         boolean isProductNotPresent = true;
 
@@ -119,6 +119,8 @@ public class ProductServiceImpl implements ProductService {
                 .map(product -> {
                     ProductDTO productDTO = modelMapper.map(product, ProductDTO.class);
                     productDTO.setImage(constructImageUrl(product.getImage()));
+                    productDTO.setCategoryId(product.getCategory().getCategoryId());
+                    productDTO.setCategoryName(product.getCategory().getCategoryName());
                     return productDTO;
                 })
                 .toList();
