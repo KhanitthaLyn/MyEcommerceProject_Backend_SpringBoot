@@ -1,4 +1,4 @@
-# MyEcommerceProject (SpringBoot Only)
+# MyEcommerceProject (BackEnd)
 
 # E-commerce Application – Full Stack Java (Spring Boot + (React))
 
