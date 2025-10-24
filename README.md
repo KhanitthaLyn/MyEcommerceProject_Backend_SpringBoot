@@ -29,19 +29,22 @@ This project covers end-to-end development from backend REST APIs to frontend in
 
 ---
 
-📚 Learning Goals
 
-This project was built to:
+## 🧩 Future Enhancements
 
-Gain hands-on experience in Spring Boot & React full stack development
+- Integration with real payment gateway (Stripe / PayPal).  
+- Product image upload & admin dashboard.  
+- Dark mode theme support.  
+- Advanced caching and state management with Redux Toolkit.
+- User Reviews & Ratings for customer feedback.
+- Personalized product recommendations based on browsing and purchase history.
+- Refund and order management system for smooth customer service.
+- Wishlist / Favorites to save products for later.
+- Search & filter functionality for easier product discovery.
+- Analytics dashboard for admins showing sales, orders, and popular products.
+- Inventory management to track stock and manage products efficiently.
 
-Learn Spring Security with JWT
-
-Understand database relationships with JPA
-
-Explore deployment with AWS
-
-Prepare for future microservices with Spring Cloud
+---
 
 http://localhost:8090/swagger-ui/index.html#/
 
