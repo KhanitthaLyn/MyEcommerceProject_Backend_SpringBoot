@@ -69,7 +69,7 @@ public class AddressServiceImp implements AddressService {
                 .orElseThrow(() -> new ResourceNotFoundException("Address", "addressId", addressId));
         addressFromDatabase.setCity(addressDTO.getCity());
         addressFromDatabase.setPincode(addressDTO.getPincode());
-        addressFromDatabase.setState(addressDTO.getStreet());
+        addressFromDatabase.setState(addressDTO.getState());
         addressFromDatabase.setCountry(addressDTO.getCountry());
         addressFromDatabase.setStreet(addressDTO.getStreet());
         addressFromDatabase.setBuildingName(addressDTO.getBuildingName());
