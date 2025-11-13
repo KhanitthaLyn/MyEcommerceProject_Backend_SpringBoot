@@ -12,17 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data // Lombok annotation to generate getters, setters, toString, equals, and hashCode
-@NoArgsConstructor // Lombok annotation to generate a no-argument constructor
-@AllArgsConstructor // Lombok annotation to generate an all-argument constructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "products")
 @ToString
 public class Product {
 
-    /**
-     * Primary key for the Product entity.
-     * Auto-generated using the IDENTITY strategy.
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
@@ -41,10 +37,7 @@ public class Product {
     private Double discount;
     private Double specialPrice;
 
-    /**
-     * Many-to-One relationship with Category entity.
-     * Each product belongs to one category.
-     */
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
