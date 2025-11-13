@@ -42,20 +42,10 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    /**
-     * Many-to-One relationship with User entity (seller).
-     * Each product is associated with a seller.
-     */
     @ManyToOne
     @JoinColumn(name = "seller_id")
     private User user;
 
-    /**
-     * One-to-Many relationship with CartItem entity.
-     * A product can appear in multiple cart items.
-     * CascadeType.PERSIST and MERGE propagate changes.
-     * FetchType.EAGER loads all related cart items immediately.
-     */
     @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     private List<CartItem> products = new ArrayList<>();
 }

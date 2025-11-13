@@ -16,7 +16,6 @@ public class ProductDTO {
     @NotBlank(message = "Product name must not be blank")
     @Size(min = 3, message = "Product name must contain at least 3 characters")
     private String productName;
-
     private String image;
 
     @Column(name = "product_description")
