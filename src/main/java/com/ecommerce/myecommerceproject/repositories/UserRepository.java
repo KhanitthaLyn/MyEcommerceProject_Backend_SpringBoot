@@ -15,10 +15,10 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u WHERE u.username = :username")
-    Optional<User> findByUsername(@Param("username") String username); // n เล็ก
+    Optional<User> findByUsername(@Param("username") String username); 
 
     @Query("SELECT CASE WHEN COUNT(u) > 0 THEN true ELSE false END FROM User u WHERE u.username = :username")
-    Boolean existsByUsername(@Param("username") String username); // n เล็ก
+    Boolean existsByUsername(@Param("username") String username); 
 
     Boolean existsByEmail(String email);
 
