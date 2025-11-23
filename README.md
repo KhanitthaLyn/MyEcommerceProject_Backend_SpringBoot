@@ -46,11 +46,12 @@ This project covers end-to-end development from backend REST APIs to frontend in
 ---
 
 http://localhost:8090/swagger-ui/index.html#/
+<img width="796" height="698" alt="Screenshot 2568-11-23 at 11 37 17" src="https://github.com/user-attachments/assets/5aedc916-464c-4bae-a490-0e2dbb464a99" />
+<img width="788" height="687" alt="Screenshot 2568-11-23 at 11 37 34" src="https://github.com/user-attachments/assets/7068775d-74cc-42f2-b242-1474a7d9bd38" />
+<img width="757" height="673" alt="Screenshot 2568-11-23 at 11 37 58" src="https://github.com/user-attachments/assets/be662728-cb76-4bdb-a509-671069a29b19" />
 
-<img width="1441" height="703" alt="Screenshot 2568-10-16 at 14 28 10" src="https://github.com/user-attachments/assets/fb8795f6-c543-4a84-b085-9605b1d28560" />
 
 
-<img width="535" height="677" alt="Screenshot 2568-09-22 at 14 40 04" src="https://github.com/user-attachments/assets/eb6b5265-4240-42e9-83c7-f2f9914f29c4" />
 
 
 
