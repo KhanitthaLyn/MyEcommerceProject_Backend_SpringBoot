@@ -49,6 +49,8 @@ http://localhost:8090/swagger-ui/index.html#/
 <img width="796" height="698" alt="Screenshot 2568-11-23 at 11 37 17" src="https://github.com/user-attachments/assets/5aedc916-464c-4bae-a490-0e2dbb464a99" />
 <img width="788" height="687" alt="Screenshot 2568-11-23 at 11 37 34" src="https://github.com/user-attachments/assets/7068775d-74cc-42f2-b242-1474a7d9bd38" />
 <img width="757" height="673" alt="Screenshot 2568-11-23 at 11 37 58" src="https://github.com/user-attachments/assets/be662728-cb76-4bdb-a509-671069a29b19" />
+<img width="1207" height="687" alt="Screenshot 2568-11-23 at 12 02 22" src="https://github.com/user-attachments/assets/f1e4c62e-7489-425c-823b-76c434311fd6" />
+
 
 
 
