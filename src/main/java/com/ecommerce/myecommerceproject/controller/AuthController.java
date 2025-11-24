@@ -2,9 +2,9 @@ package com.ecommerce.myecommerceproject.controller;
 
 import com.ecommerce.myecommerceproject.config.AppConstants;
 import com.ecommerce.myecommerceproject.payload.AuthenticationResult;
-import com.ecommerce.myecommerceproject.request.LoginRequest;
-import com.ecommerce.myecommerceproject.request.SignupRequest;
-import com.ecommerce.myecommerceproject.response.MessageResponse;
+import com.ecommerce.myecommerceproject.dto.request.LoginRequest;
+import com.ecommerce.myecommerceproject.dto.request.SignupRequest;
+import com.ecommerce.myecommerceproject.dto.response.MessageResponse;
 import com.ecommerce.myecommerceproject.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

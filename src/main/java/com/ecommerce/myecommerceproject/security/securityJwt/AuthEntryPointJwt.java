@@ -1,4 +1,4 @@
-package com.ecommerce.myecommerceproject.securityJwt;
+package com.ecommerce.myecommerceproject.security.securityJwt;
 
 import java.io.IOException;
 import java.util.HashMap;

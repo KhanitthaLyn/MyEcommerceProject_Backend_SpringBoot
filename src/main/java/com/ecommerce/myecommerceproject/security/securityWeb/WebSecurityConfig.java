@@ -1,13 +1,13 @@
-package com.ecommerce.myecommerceproject.securityWeb;
+package com.ecommerce.myecommerceproject.security.securityWeb;
 
 import com.ecommerce.myecommerceproject.model.Role;
 import com.ecommerce.myecommerceproject.model.User;
 import com.ecommerce.myecommerceproject.model.AppRole;
 import com.ecommerce.myecommerceproject.repositories.RoleRepository;
 import com.ecommerce.myecommerceproject.repositories.UserRepository;
-import com.ecommerce.myecommerceproject.securityJwt.AuthEntryPointJwt;
-import com.ecommerce.myecommerceproject.securityJwt.AuthTokenFilter;
-import com.ecommerce.myecommerceproject.securityService.UserDetailsServiceImpl;
+import com.ecommerce.myecommerceproject.security.securityJwt.AuthEntryPointJwt;
+import com.ecommerce.myecommerceproject.security.securityJwt.AuthTokenFilter;
+import com.ecommerce.myecommerceproject.security.securityService.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

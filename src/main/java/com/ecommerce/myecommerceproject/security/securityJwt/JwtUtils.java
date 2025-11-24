@@ -1,11 +1,10 @@
-package com.ecommerce.myecommerceproject.securityJwt;
+package com.ecommerce.myecommerceproject.security.securityJwt;
 
 import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
-import java.util.List;
 
-import com.ecommerce.myecommerceproject.securityService.UserDetailsImpl;
+import com.ecommerce.myecommerceproject.security.securityService.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

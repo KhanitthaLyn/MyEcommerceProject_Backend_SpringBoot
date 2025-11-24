@@ -1,4 +1,4 @@
-package com.ecommerce.myecommerceproject.securityWeb;
+package com.ecommerce.myecommerceproject.security.securityWeb;
 
 
 import org.springframework.beans.factory.annotation.Value;

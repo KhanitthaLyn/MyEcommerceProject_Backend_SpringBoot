@@ -1,6 +1,6 @@
 package com.ecommerce.myecommerceproject.payload;
 
-import com.ecommerce.myecommerceproject.response.UserInfoResponse;
+import com.ecommerce.myecommerceproject.dto.response.UserInfoResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.ResponseCookie;

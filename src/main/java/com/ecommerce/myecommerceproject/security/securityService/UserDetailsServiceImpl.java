@@ -1,4 +1,4 @@
-package com.ecommerce.myecommerceproject.securityService;
+package com.ecommerce.myecommerceproject.security.securityService;
 
 import com.ecommerce.myecommerceproject.model.User;
 import com.ecommerce.myecommerceproject.repositories.UserRepository;

@@ -1,4 +1,4 @@
-package com.ecommerce.myecommerceproject.response;
+package com.ecommerce.myecommerceproject.dto.response;
 
 import java.util.List;
 

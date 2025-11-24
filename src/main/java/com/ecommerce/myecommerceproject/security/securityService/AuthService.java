@@ -1,10 +1,10 @@
-package com.ecommerce.myecommerceproject.securityService;
+package com.ecommerce.myecommerceproject.security.securityService;
 
 import com.ecommerce.myecommerceproject.payload.AuthenticationResult;
-import com.ecommerce.myecommerceproject.request.LoginRequest;
-import com.ecommerce.myecommerceproject.request.SignupRequest;
-import com.ecommerce.myecommerceproject.response.MessageResponse;
-import com.ecommerce.myecommerceproject.response.UserInfoResponse;
+import com.ecommerce.myecommerceproject.dto.request.LoginRequest;
+import com.ecommerce.myecommerceproject.dto.request.SignupRequest;
+import com.ecommerce.myecommerceproject.dto.response.MessageResponse;
+import com.ecommerce.myecommerceproject.dto.response.UserInfoResponse;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;

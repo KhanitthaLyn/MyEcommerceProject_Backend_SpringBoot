@@ -12,15 +12,15 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Data 
-@NoArgsConstructor 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "username"),
                 @UniqueConstraint(columnNames = "email")
         })
 public class User {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,22 +43,20 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    public User(String userName, String email, String password) {
-        this.username = userName;
+
+    public User(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
     }
-        
-    @Setter
-    @Getter
+
+
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @Getter
-    @Setter
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<Address> addresses = new ArrayList<>();
 
