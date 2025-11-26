@@ -44,6 +44,11 @@ This project covers end-to-end development from backend REST APIs to frontend in
 - Inventory management to track stock and manage products efficiently.
 
 ---
+⚠️ This project reflects my real learning journey. Some parts of the code may not yet follow perfect clean-code standards, as my current priority is to deeply understand the full system behavior before performing large-scale refactoring.
+
+⚠️ Refactoring is being done incrementally as my understanding of the system grows.
+---
+
 
 http://localhost:8090/swagger-ui/index.html#/
 <img width="796" height="698" alt="Screenshot 2568-11-23 at 11 37 17" src="https://github.com/user-attachments/assets/5aedc916-464c-4bae-a490-0e2dbb464a99" />
@@ -52,8 +57,6 @@ http://localhost:8090/swagger-ui/index.html#/
 <img width="1207" height="687" alt="Screenshot 2568-11-23 at 12 02 22" src="https://github.com/user-attachments/assets/f1e4c62e-7489-425c-823b-76c434311fd6" />
 <img width="2878" height="1604" alt="image" src="https://github.com/user-attachments/assets/ecd88ed0-2272-4651-bd93-f6848e7aa0bb" />
 <img width="2884" height="1600" alt="image" src="https://github.com/user-attachments/assets/44653952-3b2f-453a-87a0-2fee380cb538" />
-
-
 
 
 
