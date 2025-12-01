@@ -17,38 +17,38 @@ React Client
     → Entity Model 
     → Database
 
-1️⃣ Client Layer
+1️⃣ Client Layer –
   💻 React.js (Frontend UI)
   🧪 Postman / Thunder Client (API Testing)
 
-2️⃣ Controller Layer
+2️⃣ Controller Layer –
   🌐 Expose REST endpoints
   🛡️ Validate incoming requests
   📤 Return DTO responses
 
-3️⃣ Security Layer
+3️⃣ Security Layer –
   🔐 Spring Security 6
   🔑 JWT Authentication & Authorization
   🧩 Custom Filters:
   🌀 OncePerRequestFilter
   🧿 JwtAuthenticationFilter
 
-4️⃣ Authentication Layer
+4️⃣ Authentication Layer –
   👤 Login / Register
   🔄 Token generation / refresh
   📚 UserDetailsService implementation
 
-5️⃣ Service Layer
+5️⃣ Service Layer –
   🧠 Business logic
   🔁 Domain workflows
   🔄 DTO ↔ Entity mapping
 
-6️⃣ Repository Layer
+6️⃣ Repository Layer –
   🗂️ Spring Data JPA Repositories
   🔍 Query methods
   🧱 Database access abstraction
-
-7️⃣ Model / Entity Layer
+ 
+7️⃣ Model / Entity Layer –
   🧩 Domain models
   📊 Table mapping
   🔗 Relationships:
@@ -56,7 +56,7 @@ React Client
   🔁 @ManyToOne
   🔀 @ManyToMany
 
-8️⃣ Database
+8️⃣ Database – 
   🛢️ MySQL / PostgreSQL
   🧱 Schema managed via Hibernate
   
