@@ -8,47 +8,58 @@ This project covers end-to-end development from backend REST APIs to frontend in
 ---
 
 🏗️ System Architecture Overview
-React Client → REST Controller → Security (JWT) → Auth Service 
-→ Business Service → JPA Repository → Entity Model → Database
+React Client 
+    → REST Controller 
+    → Security (JWT) 
+    → Auth Service 
+    → Business Service 
+    → JPA Repository 
+    → Entity Model 
+    → Database
 
-1. Client Layer
-React.js frontend
-Postman / Thunder Client (API Testing)
+1️⃣ Client Layer
+  💻 React.js (Frontend UI)
+  🧪 Postman / Thunder Client (API Testing)
 
-2. Controller Layer
-Expose REST endpoints
-Validate requests
-Return DTO responses
+2️⃣ Controller Layer
+  🌐 Expose REST endpoints
+  🛡️ Validate incoming requests
+  📤 Return DTO responses
 
-3. Security Layer
-Spring Security 6
-JWT Authentication + Authorization
-Custom Filters (OncePerRequest, JWT Token Filter)
+3️⃣ Security Layer
+  🔐 Spring Security 6
+  🔑 JWT Authentication & Authorization
+  🧩 Custom Filters:
+  🌀 OncePerRequestFilter
+  🧿 JwtAuthenticationFilter
 
-4. Authentication Layer
-Login / Register
-Token generation / refresh
-UserDetailsService implementation
+4️⃣ Authentication Layer
+  👤 Login / Register
+  🔄 Token generation / refresh
+  📚 UserDetailsService implementation
 
-5. Service Layer
-Business logic
-Domain workflows
-DTO ↔ Entity mapping
+5️⃣ Service Layer
+  🧠 Business logic
+  🔁 Domain workflows
+  🔄 DTO ↔ Entity mapping
 
-6. Repository Layer
-JPA Repositories
-Query methods
-Database access abstraction
+6️⃣ Repository Layer
+  🗂️ Spring Data JPA Repositories
+  🔍 Query methods
+  🧱 Database access abstraction
 
-7. Model / Entity Layer
-Domain models
-Table mapping
-Relationships (OneToMany, ManyToOne, etc.)
+7️⃣ Model / Entity Layer
+  🧩 Domain models
+  📊 Table mapping
+  🔗 Relationships:
+  ➕ @OneToMany
+  🔁 @ManyToOne
+  🔀 @ManyToMany
 
-8. Database
-MySQL / PostgreSQL
-Schema managed via Hibernate
-
+8️⃣ Database
+  🛢️ MySQL / PostgreSQL
+  🧱 Schema managed via Hibernate
+  
 ---
 
 ## 🚀 Features
