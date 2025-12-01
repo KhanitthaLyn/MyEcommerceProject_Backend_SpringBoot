@@ -8,6 +8,7 @@ This project covers end-to-end development from backend REST APIs to frontend in
 ---
 
 🏗️ System Architecture Overview
+
 React Client 
     → REST Controller 
     → Security (JWT) 
