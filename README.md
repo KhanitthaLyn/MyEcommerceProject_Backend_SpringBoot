@@ -4,6 +4,24 @@
 
 A production-grade **E-commerce web application** built with **Spring Boot, Spring Framework, Hibernate, React, (and AWS deployment)**.  
 This project covers end-to-end development from backend REST APIs to frontend integration, with secure authentication and real-world eCommerce features.
+---
+Architecture
+
+Client (React, Postman)
+    ↓
+Controller Layer (REST APIs)
+    ↓
+Security Layer (JWT, Filter — Token)
+    ↓
+AuthService (Login/Register)
+    ↓
+Service Layer (Business Logic)
+    ↓
+Repository Layer (JPA Repository)
+    ↓
+Model/Entity (Class — Table)
+    ↓
+Database (MySQL / PostgreSQL)
 
 ---
 
