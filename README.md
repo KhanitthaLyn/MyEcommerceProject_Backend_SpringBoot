@@ -4,69 +4,49 @@
 
 A production-grade **E-commerce web application** built with **Spring Boot, Spring Framework, Hibernate, React, (and AWS deployment)**.  
 This project covers end-to-end development from backend REST APIs to frontend integration, with secure authentication and real-world eCommerce features.
+
 ---
+
 🏗️ System Architecture Overview
 React Client → REST Controller → Security (JWT) → Auth Service 
 → Business Service → JPA Repository → Entity Model → Database
 
 1. Client Layer
-
 React.js frontend
-
 Postman / Thunder Client (API Testing)
 
 2. Controller Layer
-
 Expose REST endpoints
-
 Validate requests
-
 Return DTO responses
 
 3. Security Layer
-
 Spring Security 6
-
 JWT Authentication + Authorization
-
 Custom Filters (OncePerRequest, JWT Token Filter)
 
 4. Authentication Layer
-
 Login / Register
-
 Token generation / refresh
-
 UserDetailsService implementation
 
 5. Service Layer
-
 Business logic
-
 Domain workflows
-
 DTO ↔ Entity mapping
 
 6. Repository Layer
-
 JPA Repositories
-
 Query methods
-
 Database access abstraction
 
 7. Model / Entity Layer
-
 Domain models
-
 Table mapping
-
 Relationships (OneToMany, ManyToOne, etc.)
 
 8. Database
-
 MySQL / PostgreSQL
-
 Schema managed via Hibernate
 
 ---
