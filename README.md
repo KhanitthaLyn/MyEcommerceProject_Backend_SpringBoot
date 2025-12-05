@@ -63,16 +63,32 @@ React Client
   
 ---
 
-## 🚀 Features
-- **Authentication & Authorization**: Spring Security with JWT (role-based access, custom auth)
-- **Product & Category Management**: Full CRUD APIs
-- **Shopping Cart & Orders**: Cart, checkout, order history
-- **User Profiles & Addresses**: Manage profile, shipping info
-- **Payment Module**: Basic payment and order confirmation
-- **Database Integration**: JPA/Hibernate with PostgreSQL/MySQL
-- **Deployment**: Spring Boot Profiles + AWS deployment
-- **Frontend**: React for SPA + Thymeleaf for server-side rendering
-- **Extras**: Pagination, sorting, validation, Lombok, logging
+## 🔧 Current Limitations & Ongoing Improvements
+This project is actively being improved. Here are the key areas I am currently refactoring to make the system production-ready:
+
+- Security Hardening:
+Improving JWT implementation, adding refresh token flow, better exception handling, and token rotation.
+
+- **DTO / Entity Consistency**:
+Standardizing naming, validation, and creating a clean mapper layer to avoid field mismatch.
+
+- **Service Layer Cleanup**:
+Separating business logic, mapping, and validation for better maintainability and clarity.
+
+- **Error Handling Improvements**:
+Adding a global exception handler and consistent API error response structure.
+
+- **Repository Query Fixes**:
+Correcting JPQL entity names and improving repository patterns.
+
+- **Package Restructuring**:
+Moving toward modular feature-based architecture (product/, order/, user/, auth/).
+
+- **Test Coverage**:
+Adding unit tests, integration tests, and security tests to ensure reliability.
+
+- **Documentation**:
+Adding Swagger/OpenAPI for API documentation.
 
 ---
 
