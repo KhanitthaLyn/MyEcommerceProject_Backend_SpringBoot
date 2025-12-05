@@ -64,8 +64,6 @@ React Client
 ---
 
 ## 🔧 Current Limitations & Ongoing Improvements
-This project is actively being improved. Here are the key areas I am currently refactoring to make the system production-ready:
-
 - Security Hardening:
 Improving JWT implementation, adding refresh token flow, better exception handling, and token rotation.
 
