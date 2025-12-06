@@ -62,6 +62,9 @@ React Client
   🧱 Schema managed via Hibernate
   
 ---
+⚠️ This project reflects my real learning journey. Some parts of the code may not yet follow perfect clean-code standards, as my current priority is to deeply understand the full system behavior before performing large-scale refactoring.
+
+⚠️ Refactoring is being done incrementally as my understanding of the system grows.
 
 ## 🔧 Current Limitations & Ongoing Improvements
 - Security Hardening:
@@ -114,11 +117,6 @@ Adding Swagger/OpenAPI for API documentation.
 - Inventory management to track stock and manage products efficiently.
 
 ---
-⚠️ This project reflects my real learning journey. Some parts of the code may not yet follow perfect clean-code standards, as my current priority is to deeply understand the full system behavior before performing large-scale refactoring.
-
-⚠️ Refactoring is being done incrementally as my understanding of the system grows.
----
-
 
 http://localhost:8090/swagger-ui/index.html#/
 <img width="796" height="698" alt="Screenshot 2568-11-23 at 11 37 17" src="https://github.com/user-attachments/assets/5aedc916-464c-4bae-a490-0e2dbb464a99" />
