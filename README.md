@@ -63,6 +63,30 @@ React Client
   🧱 Schema managed via Hibernate
   
 ---
+## 🛠️ Tech Stack
+**Backend:** Java, Spring Boot, Spring MVC, Spring Security, JPA/Hibernate  
+**Frontend:** React, Thymeleaf  
+**Database:** PostgreSQL, MySQL  
+**Tools:** Maven, Lombok, Git, Postman  
+**Deployment:** AWS, Docker (optional)  
+
+---
+
+
+## 🧩 Future Enhancements
+
+- Integration with real payment gateway (Stripe / PayPal).  
+- Dark mode theme support.  
+- Advanced caching and state management with Redux Toolkit.
+- User Reviews & Ratings for customer feedback.
+- Personalized product recommendations based on browsing and purchase history.
+- Refund and order management system for smooth customer service.
+- Wishlist / Favorites to save products for later.
+- Search & filter functionality for easier product discovery.
+- Analytics dashboard for admins showing sales, orders, and popular products.
+- Inventory management to track stock and manage products efficiently.
+
+---
 ⚠️ This project reflects my real learning journey. Some parts of the code may not yet follow perfect clean-code standards, as my current priority is to deeply understand the full system behavior before performing large-scale refactoring.
 
 ⚠️ Refactoring is being done incrementally as my understanding of the system grows.
@@ -94,30 +118,35 @@ Adding Swagger/OpenAPI for API documentation.
 
 ---
 
-## 🛠️ Tech Stack
-**Backend:** Java, Spring Boot, Spring MVC, Spring Security, JPA/Hibernate  
-**Frontend:** React, Thymeleaf  
-**Database:** PostgreSQL, MySQL  
-**Tools:** Maven, Lombok, Git, Postman  
-**Deployment:** AWS, Docker (optional)  
+Key Flows
+
+- Auth flow: Register/Login → JWT → Access protected endpoints
+
+- Catalog flow: List products → Product details
+
+- Checkout flow: Add to cart → Create order → Update order status
+
+- Admin flow (optional): Manage products/orders
 
 ---
 
+How to Run (Local)
 
-## 🧩 Future Enhancements
+# 1) Clone
+git clone <repo-url>
+cd MyEcommerceProject
 
-- Integration with real payment gateway (Stripe / PayPal).  
-- Dark mode theme support.  
-- Advanced caching and state management with Redux Toolkit.
-- User Reviews & Ratings for customer feedback.
-- Personalized product recommendations based on browsing and purchase history.
-- Refund and order management system for smooth customer service.
-- Wishlist / Favorites to save products for later.
-- Search & filter functionality for easier product discovery.
-- Analytics dashboard for admins showing sales, orders, and popular products.
-- Inventory management to track stock and manage products efficiently.
+# 2) Configure DB (choose one)
+# Option A: Docker (recommended)
+docker compose up -d
 
----
+# 3) Run backend
+./mvnw spring-boot:run
+# or: mvn spring-boot:run
+
+# 4) Open Swagger
+http://localhost:8090/swagger-ui/index.html
+
 
 http://localhost:8090/swagger-ui/index.html#/
 <img width="796" height="698" alt="Screenshot 2568-11-23 at 11 37 17" src="https://github.com/user-attachments/assets/5aedc916-464c-4bae-a490-0e2dbb464a99" />
