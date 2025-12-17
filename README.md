@@ -1,4 +1,5 @@
 # MyEcommerceProject (BackEnd)
+Status: Maintenance mode (focus on microservices version)
 
 # E-commerce Application – Full Stack Java (Spring Boot + (React))
 
@@ -91,7 +92,7 @@ React Client
 
 ⚠️ Refactoring is being done incrementally as my understanding of the system grows.
 
-## 🔧 Current Limitations & Ongoing Improvements
+## 🔧 Current Roadmap (later) & Ongoing Improvements
 - Security Hardening:
 Improving JWT implementation, adding refresh token flow, better exception handling, and token rotation.
 
