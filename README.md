@@ -2,7 +2,8 @@
 
 # E-commerce Application – Full Stack Java (Spring Boot + (React))
 
-A production-grade **E-commerce web application** built with **Spring Boot, Spring Framework, Hibernate, React, (and AWS deployment)**.  
+A portfolio e-commerce application built with Spring Boot (REST API) and a React client.
+Focus: backend architecture, security, and scalable domain design
 This project covers end-to-end development from backend REST APIs to frontend integration, with secure authentication and real-world eCommerce features.
 
 ---
