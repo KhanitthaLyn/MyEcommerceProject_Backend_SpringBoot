@@ -132,23 +132,23 @@ Key Flows
 
 How to Run (Local)
 
-# 1) Clone
+1) Clone
 git clone <repo-url>
 cd MyEcommerceProject
 
-# 2) Configure DB (choose one)
-# Option A: Docker (recommended)
+2) Configure DB (choose one)
+Option A: Docker 
 docker compose up -d
 
-# 3) Run backend
+4) Run backend
 ./mvnw spring-boot:run
-# or: mvn spring-boot:run
+or: mvn spring-boot:run
 
-# 4) Open Swagger
+5) Open Swagger
 http://localhost:8090/swagger-ui/index.html
 
+---
 
-http://localhost:8090/swagger-ui/index.html#/
 <img width="796" height="698" alt="Screenshot 2568-11-23 at 11 37 17" src="https://github.com/user-attachments/assets/5aedc916-464c-4bae-a490-0e2dbb464a99" />
 <img width="788" height="687" alt="Screenshot 2568-11-23 at 11 37 34" src="https://github.com/user-attachments/assets/7068775d-74cc-42f2-b242-1474a7d9bd38" />
 <img width="757" height="673" alt="Screenshot 2568-11-23 at 11 37 58" src="https://github.com/user-attachments/assets/be662728-cb76-4bdb-a509-671069a29b19" />
